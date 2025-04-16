@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import Book from './models/bookModel.js';
+import booksRoute from './routes/bookRoute.js'
 
 dotenv.config()
 
@@ -13,31 +13,7 @@ app.get('/', (req, res) => {
     return res.status(201).send("Welcome to MERN stack")
 })
 
-app.post('/books', async (request, response) => {
-    try {
-        const { title, author, publishYear } = request.body;
-
-        if(!title || !author || !publishYear) {
-            return response.status(400).send({
-                success: false,
-                message: "Send all required fields: title, author, publishYear"
-            })
-        }
-
-        const newBook = {
-            title,
-            author,
-            publishYear
-        }
-
-        const book = await Book.create(newBook);
-
-        return response.status(201).send(book)
-    } catch (error) {
-        console.log(error.message)
-        response.status(500).send({ message: error.message })
-    }
-})
+app.use('/books', booksRoute)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
