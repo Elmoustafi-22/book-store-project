@@ -13,14 +13,15 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:8000/books/${id}`)
+      .get(`https://book-store-project-q09a.onrender.com/books/${id}`)
       .then((response) => {
-        setBook(response.data.book)
-        setLoading(false)
-      }).catch((error) => {
-        console.log(error);
-        setLoading(false)
+        setBook(response.data.book);
+        setLoading(false);
       })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
   }, [])
   return (
     <div className='p-4 font-raleway'>

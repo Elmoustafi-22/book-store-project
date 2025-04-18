@@ -14,17 +14,18 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true)
     axios
-      .delete(`http://localhost:8000/books/${id}`)
+      .delete(`https://book-store-project-q09a.onrender.com/books/${id}`)
       .then(() => {
-        setLoading(false)
-        enqueueSnackbar('Book deleted successfully', { variant: 'success' })
-        navigate('/')
-      }).catch((error) => {
-        setLoading(false)
-        //alert('An error happened. Please check console');
-        enqueueSnackbar('Error', { variant: "error" })
-        console.error(error)
+        setLoading(false);
+        enqueueSnackbar("Book deleted successfully", { variant: "success" });
+        navigate("/");
       })
+      .catch((error) => {
+        setLoading(false);
+        //alert('An error happened. Please check console');
+        enqueueSnackbar("Error", { variant: "error" });
+        console.error(error);
+      });
   }
   return (
     <div className='p-4 font-jost'>

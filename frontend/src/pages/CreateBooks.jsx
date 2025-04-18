@@ -21,18 +21,18 @@ const CreateBooks = () => {
     }
     setLoading(true);
     axios
-      .post('http://localhost:8000/books', data)
+      .post("https://book-store-project-q09a.onrender.com", data)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar('Book created successfully', { variant: 'success' })
-        navigate('/')
+        enqueueSnackbar("Book created successfully", { variant: "success" });
+        navigate("/");
       })
       .catch((error) => {
         setLoading(false);
         // alert('An error occured. Please check console');
-        enqueueSnackbar('Error', {variant: 'error'})
-        console.log(error)
-      })
+        enqueueSnackbar("Error", { variant: "error" });
+        console.log(error);
+      });
   }
 
   return (

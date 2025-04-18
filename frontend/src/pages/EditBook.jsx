@@ -18,7 +18,7 @@ const EditBook = () => {
     setLoading(true)
     const fetchBook = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/books/${id}`)
+        const res = await axios.get(`https://book-store-project-q09a.onrender.com/books/${id}`)
         const { title, author, publishYear } = res.data.book
         setTitle(title)
         setAuthor(author)
@@ -40,18 +40,19 @@ const EditBook = () => {
       publishYear,
     }
     setLoading(true);
-    axios.patch(`http://localhost:8000/books/${id}`, data)
+    axios
+      .patch(`https://book-store-project-q09a.onrender.com/books/${id}`, data)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar('Book edited successfully!', { variant: 'success' })
-        navigate('/')
+        enqueueSnackbar("Book edited successfully!", { variant: "success" });
+        navigate("/");
       })
       .catch((error) => {
         setLoading(false);
-        alert('An error occured. Please check console')
-        enqueueSnackbar('Error', { variant: 'error' })
-        console.log(error)
-      })
+        alert("An error occured. Please check console");
+        enqueueSnackbar("Error", { variant: "error" });
+        console.log(error);
+      });
   }
 
   return (

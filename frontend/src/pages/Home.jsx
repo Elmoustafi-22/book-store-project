@@ -15,14 +15,14 @@ const Home = () => {
     setLoading(true);
 
     axios
-      .get('http://localhost:8000/books')
+      .get("https://book-store-project-q09a.onrender.com/books")
       .then((response) => {
-        setBooks(response.data.books)
-        setLoading(false)
+        setBooks(response.data.books);
+        setLoading(false);
       })
       .catch((error) => {
-        console.log(error)
-      })
+        console.log(error);
+      });
   }, [])
 
   return (
