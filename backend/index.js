@@ -17,7 +17,7 @@ app.use(cors())
 
 app.get('/', (req, res) => {
     console.log(req)
-    return res.status(201).send("Welcome to MERN stack")
+    return res.status(201).send("Welcome to Books Store API\nAdd '/books' to the URL to get all books")
 })
 
 app.use('/books', booksRoute)
